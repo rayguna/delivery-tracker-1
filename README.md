@@ -243,4 +243,5 @@ Tried to remove .details validates, but it didn't help.
 
 - When stuck, follow closely the test case and duplicate the steps exactly on the target and the app, compare the sources side by side, and troubleshoot line by line. Using debugger as a stop point and executing some commands in the rails console (e.g., params, TABLE_NAME) tend to help as well.
 
+I would like to know how the "waiting on" and "received" packages are differentiated in the actual solution (i.e., whether it uses the where statement to filter the deliveries by user_id and arrived attribute andin what form). 
 ***
