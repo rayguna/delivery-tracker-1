@@ -224,3 +224,23 @@ Tried to sort the received list by updated_at as in the target page, as follows,
 Tried to remove .details validates, but it didn't help. 
 
 ***
+
+14. Follow the test case as closely as possible:
+
+- Begin by creating a new user called jacob_99@example.com.
+- Duplicate the steps exactly on both the target page and your page and compare the sources. 
+- I found that on my page, the waiting on div is missing the closing tag </div>.
+- Re-run `rake grade`. All tests passed as a result!
+
+**Bottom lines**: 
+- Missing tags can make a difference in the test case because the test case relies on the css/html format by looking at the complete tags.
+
+- Remove unecessary formats to pass all tests.
+
+- The `devise gem` automates the whole process of creating the sign-in/sign-out boilerplate.
+
+- The command `rails generate draft:resource table_name field:data_type` followed by rails db:migrate automatically generate the boilerplate for creating route, tables, form, and html page (i.e., the entire RCAV process). However, you need to customize the display name and layou, and forms. This approach saves much of the time as opposed to manually executing the entire RCAV process. Hence, utilizing gems and writing and using the rake commands can save much time in your entire full-stack process.  
+
+- When stuck, follow closely the test case and duplicate the steps exactly on the target and the app, compare the sources side by side, and troubleshoot line by line. Using debugger as a stop point and executing some commands in the rails console (e.g., params, TABLE_NAME) tend to help as well.
+
+***
