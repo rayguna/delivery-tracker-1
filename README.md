@@ -116,3 +116,44 @@ has_many(:delivery)
 ### D. Work on front end
 
 1. Look at the target.
+
+2. Go to app/views/layouts/application.html.erb and add the contents within the <nav> tag.
+
+```
+    <nav>
+        <a href="/">Delivery Tracker</a>
+        |
+        <a href="/users/edit">Edit profile</a>
+        |
+        <a href="/users/sign_out">Sign out</a>
+    </nav>
+
+    <hr>
+```
+
+3. Add the following to the <head> of application.html.erb:
+
+```
+<!-- app/views/layouts/application.html.erb -->
+
+<link rel="stylesheet" href="/css/my_styles.css">
+```
+
+4. Modify the h1 and h2 messages of the views/deliveries/index.html.erb files.
+
+5. Mimic bulletin-board-2 assignment and add to the head the following message displays in the body section:
+
+```
+    <% if notice.present? %>
+      <div style="color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="color: red">
+        <%= alert %>
+      </div>
+    <% end %>
+```
+6. Add validates statements to catch alert and to give notice when forms are submitted.
