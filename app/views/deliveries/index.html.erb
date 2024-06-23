@@ -62,8 +62,39 @@
 </div>
 
 <hr>
+
+
 <div class="waiting_on">
   <h2>Waiting on</h2>
+
+  <ul>
+    <% @list_of_deliveries.each do |a_delivery| %>
+      <li>
+        <div><%=a_delivery.description%></div>
+
+        <div style="color: red">
+          Supposed to arrive on <%=a_delivery.supposed_to_arrive_on.strftime("%Y-%m-%d")%>
+        </div>
+
+        <div>
+          <%=a_delivery.details%>
+        </div>
+
+        <div>
+          <form action="/modify_delivery/<%=a_delivery.id%>" method="post">
+            <input type="hidden" name="arrived" value="true">
+
+            <button>Mark as received</button>
+          </form>
+        </div>
+        
+        <br>
+      </li>
+      <%end%>
+    </ul>
+
+
+
   <div>
     <table border="1">
       <tr>
