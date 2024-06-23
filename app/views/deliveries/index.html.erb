@@ -69,7 +69,7 @@
 
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
-      <%if a_delivery.arrived==true and a_delivery.user_id == current_user.id%>
+      <%if a_delivery.arrived==false and a_delivery.user_id == current_user.id%>
         <li>
           <div><%=a_delivery.description%></div>
 
@@ -187,7 +187,7 @@
 
   <ul>
     <% @list_of_deliveries.each do |a_delivery| %>
-      <%if a_delivery.arrived==true%>
+      <%if a_delivery.arrived==true and a_delivery.user_id == current_user.id%>
         <li>
           <div><%=a_delivery.description%></div>
 
