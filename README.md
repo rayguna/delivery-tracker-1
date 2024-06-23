@@ -197,4 +197,21 @@ end
 
 11. "Mark as received" button on the index page should be redirected back to the index page!
 
+12. Mimic target and change the route when the "mark as received" button is pressed to return to the main page.
+
+```
+#app/controllers/deliveries_controller.rb
+
+    if the_delivery.valid?
+      the_delivery.save
+      #redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+      redirect_to("/deliveries", { :notice => "Delivery updated successfully."} )
+
+    else
+      #redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+      redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
+    end
+```
+
+13. Most of the errors went away after fixing the route for the "mark as received" button and after deleting the default table on the index page.
 ***

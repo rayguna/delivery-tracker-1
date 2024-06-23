@@ -48,9 +48,12 @@ class DeliveriesController < ApplicationController
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+      #redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+      redirect_to("/deliveries", { :notice => "Delivery updated successfully."} )
+
     else
-      redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+      #redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+      redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
 
   end
