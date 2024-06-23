@@ -17,31 +17,34 @@ class DeliveriesController < ApplicationController
     render({ :template => "deliveries/show" })
   end
 
-  def create
+  def create # "Log delivery" button
     the_delivery = Delivery.new
     the_delivery.user_id = params.fetch("query_user_id")
     the_delivery.description = params.fetch("query_description")
     the_delivery.details = params.fetch("query_details")
     the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
-    the_delivery.arrived = params.fetch("query_arrived", false)
+    the_delivery.arrived = false #params.fetch("query_arrived", false) #the default is false
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries", { :notice => "Delivery created successfully." })
+      #redirect_to("/deliveries", { :notice => "Delivery created successfully." })
+      redirect_to("/deliveries", { :notice => "Added to list." })
     else
       redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
   end
 
-  def update
-    the_id = params.fetch("path_id")
-    the_delivery = Delivery.where({ :id => the_id }).at(0)
+  def update # "Mark as received" button
+    the_id = params.fetch("path_id") #this is the same as the deliveries id
+    the_delivery = Delivery.where({ :id => the_id }).at(0) #matches the row of the item
 
-    the_delivery.user_id = params.fetch("query_user_id")
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.details = params.fetch("query_details")
-    the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
-    the_delivery.arrived = params.fetch("query_arrived", false)
+    #the_delivery.user_id = params.fetch("query_user_id")
+    #the_delivery.description = params.fetch("query_description")
+    #the_delivery.details = params.fetch("query_details")
+    
+
+    #the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
+    the_delivery.arrived = true #params.fetch("query_arrived", false) #change status to arrived
 
     if the_delivery.valid?
       the_delivery.save
@@ -49,6 +52,7 @@ class DeliveriesController < ApplicationController
     else
       redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
+
   end
 
   def destroy

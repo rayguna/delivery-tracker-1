@@ -161,3 +161,40 @@ has_many(:delivery)
 7. Change button caption from "Create delivery" to "Log delivery".
 
 8. Hide user textbox and default the value to current_user.id.
+
+9. Added to deliveries controller the statement "Added to list"
+
+```
+  def create # "Log delivery" button
+    the_delivery = Delivery.new
+    the_delivery.user_id = params.fetch("query_user_id")
+    the_delivery.description = params.fetch("query_description")
+    the_delivery.details = params.fetch("query_details")
+    the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
+    the_delivery.arrived = params.fetch("query_arrived", false)
+
+    if the_delivery.valid?
+      the_delivery.save
+      #redirect_to("/deliveries", { :notice => "Delivery created successfully." })
+      redirect_to("/deliveries", { :notice => "Added to list." })
+    else
+      redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
+    end
+  end
+```
+
+10. Need to ad validates command to `app/models/delivery.db`, so that the form can be validated.
+
+```
+class Delivery < ApplicationRecord
+  validates(:supposed_to_arrive_on, presence: true) #make sure the arrival date is set
+  validates(:description, presence: true) #make sure description is set
+  validates(:details, presence: true) #make sure details is set
+
+  belongs_to(:user)
+end
+```
+
+11. "Mark as received" button on the index page should be redirected back to the index page!
+
+***
