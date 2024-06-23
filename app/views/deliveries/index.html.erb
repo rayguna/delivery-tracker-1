@@ -97,7 +97,7 @@
     <h2>Received</h2>
 
     <ul>
-      <% @list_of_deliveries.each do |a_delivery| %>
+      <% @list_of_deliveries.sort_by(&:updated_at).reverse!.each do |a_delivery| %>
         <%if a_delivery.arrived==true and a_delivery.user_id == current_user.id%>
           <li>
             <div><%=a_delivery.description%></div>

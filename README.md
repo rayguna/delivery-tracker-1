@@ -214,4 +214,13 @@ end
 ```
 
 13. Most of the errors went away after fixing the route for the "mark as received" button and after deleting the default table on the index page.
+
+Tried to sort the received list by updated_at as in the target page, as follows, but it didn't help.
+
+```
+<% @list_of_deliveries.sort_by(&:updated_at).reverse!.each do |a_delivery| %>
+```
+
+Tried to remove .details validates, but it didn't help. 
+
 ***
