@@ -157,3 +157,7 @@ has_many(:delivery)
     <% end %>
 ```
 6. Add validates statements to catch alert and to give notice when forms are submitted.
+
+7. Change button caption from "Create delivery" to "Log delivery".
+
+8. Hide user textbox and default the value to current_user.id.
