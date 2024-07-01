@@ -93,7 +93,7 @@ Rails.application.routes.draw do
 
 Note that the name deliveries must match with the class name. In this case, the command root "deliveries#index" replaces `get("/", { :controller => "deliveries", :action => "index" })`.
 
-4. The command rake sample_Data populate the users table with the five default users, and youcan login with any of the credentials.
+4. The command rake sample_Data populate the users table with the five default users, and you can login with any of the credentials.
 
 5. Type `rake grade` to get the current score. The score is only 2/22.
 
