@@ -183,7 +183,7 @@ has_many(:delivery)
   end
 ```
 
-10. Need to ad validates command to `app/models/delivery.db`, so that the form can be validated.
+10. Need to add validates command to `app/models/delivery.db`, so that the form can be validated.
 
 ```
 class Delivery < ApplicationRecord
